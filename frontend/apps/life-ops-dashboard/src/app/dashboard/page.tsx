@@ -8,6 +8,7 @@ import {
   SidebarProvider,
 } from "@org/ui/components/ui/sidebar"
 
+//@ts-ignore
 import data from "./data.json"
 
 export default function Page() {
