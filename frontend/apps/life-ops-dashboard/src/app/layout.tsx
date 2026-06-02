@@ -1,4 +1,5 @@
 import './global.css';
+import { ThemeProvider } from '@/components/providers/theme-provider';
 
 export const metadata = {
   title: 'Welcome to life-ops-dashboard',
@@ -11,8 +12,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <head />
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children} 
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

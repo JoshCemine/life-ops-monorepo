@@ -4,6 +4,7 @@
     "paths": {
       "@org/ui/*": ["./src/*"]
     },
+    "lib": ["es2022", "dom", "dom.iterable"],
     "outDir": "dist",
     "types": [
       "node",
