@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": false,
+  "files": [],
+  "references": [
+    {
+      "path": "./apps/life-ops-dashboard-e2e"
+    },
+    {
+      "path": "./apps/life-ops-dashboard"
+    },
+    {
+      "path": "./packages/ui"
+    }
+  ]
+}
