@@ -13,6 +13,7 @@ export async function authenticate(_prev: string | undefined, formData: FormData
     if (error instanceof AuthError) return "Invalid email or password."
     throw error
   }
+  return
 }
 
 export async function logout() {

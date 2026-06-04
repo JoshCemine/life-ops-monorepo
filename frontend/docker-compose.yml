@@ -1,0 +1,20 @@
+services:
+  web:
+    image: ghcr.io/joshcemine/life-ops-monorepo:latest
+    restart: unless-stopped
+    env_file: .env.production
+    ports:
+      - "127.0.0.1:3000:3000"   # only nginx on the host can reach it
+
+  # --- later, when backend/ is real ---
+  # backend:
+  #   image: ghcr.io/joshcemine/life-ops-backend:latest
+  #   restart: unless-stopped
+  #   env_file: .env.backend
+  # db:
+  #   image: postgres:16-alpine
+  #   restart: unless-stopped
+  #   volumes: [pgdata:/var/lib/postgresql/data]
+  #   env_file: .env.db
+# volumes:
+#   pgdata:
