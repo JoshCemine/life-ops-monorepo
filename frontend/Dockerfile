@@ -5,7 +5,7 @@ COPY package.json package-lock.json nx.json ./
 COPY apps/life-ops-dashboard/package.json      apps/life-ops-dashboard/
 COPY apps/life-ops-dashboard-e2e/package.json  apps/life-ops-dashboard-e2e/
 COPY packages/ui/package.json                  packages/ui/
-RUN npm ci --legacy-peer-deps
+RUN npm install --no-audit --no-fund
 
 ############ build ############
 FROM node:24-alpine AS build
