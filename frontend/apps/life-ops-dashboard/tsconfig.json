@@ -22,9 +22,6 @@
       "@/*": ["./src/*"],
       "@org/ui/*": ["../../packages/ui/src/*"]
     },
-    "outDir": "dist",
-    "rootDir": "src",
-    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
   },
   "include": [
     "src/**/*.ts",
@@ -34,7 +31,7 @@
     "../../apps/life-ops-dashboard/.next/types/**/*.ts",
     "../../dist/apps/life-ops-dashboard/.next/types/**/*.ts",
     "next-env.d.ts"
-  ],
+, "../../packages/ui/src/hooks/use-mobile.ts"  ],
   "exclude": [
     "out-tsc",
     "dist",

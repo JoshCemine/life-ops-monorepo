@@ -1,3 +1,5 @@
+"use client"
+
 import { cn } from "@org/ui/lib/utils"
 import { Button } from "@org/ui/components/ui/button"
 import {
@@ -8,13 +10,16 @@ import {
   FieldSeparator,
 } from "@org/ui/components/ui/field"
 import { Input } from "@org/ui/components/ui/input"
+import { authenticate } from "@/app/login/actions"
+import { useActionState } from "react"
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
+  const [errorMessage, formAction, isPending] = useActionState(authenticate, undefined)
   return (
-    <form className={cn("flex flex-col gap-6", className)} {...props}>
+    <form className={cn("flex flex-col gap-6", className)} {...props} action={formAction}>
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
           <h1 className="text-2xl font-bold">Login to your account</h1>
@@ -24,22 +29,23 @@ export function LoginForm({
         </div>
         <Field>
           <FieldLabel htmlFor="email">Email</FieldLabel>
-          <Input id="email" type="email" placeholder="m@example.com" required />
+          <Input id="email" type="email" name="email" placeholder="m@example.com" required />
         </Field>
         <Field>
           <div className="flex items-center">
             <FieldLabel htmlFor="password">Password</FieldLabel>
-            <a
-              href="#"
-              className="ml-auto text-sm underline-offset-4 hover:underline"
-            >
-              Forgot your password?
-            </a>
           </div>
-          <Input id="password" type="password" required />
+          <Input id="password" type="password" name="password" required />
         </Field>
         <Field>
-          <Button type="submit">Login</Button>
+          {errorMessage && (
+            <p className="text-sm text-center text-destructive" aria-live="polite">
+              {errorMessage}
+            </p>
+          )}
+          <Button type="submit" disabled={isPending}>
+            {isPending ? "Logging in..." : "Login"}
+          </Button>
         </Field>
         <FieldSeparator>Or continue with</FieldSeparator>
         <Field>
